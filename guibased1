@@ -1,0 +1,194 @@
+import simplegui
+store=12
+operand=15
+
+def output():
+    global store,operand
+    print "store= ",store
+    print"operand= ",operand
+
+def swap():
+    global store,operand
+    store,operand=operand,store
+    output()
+    
+def add():
+    global store,operand
+    store=store+operand
+    output()
+    
+def minus():
+    global store,operand
+    store=store-operand
+    output()
+    
+def enter(inp):
+    global operand
+    operand=inp
+    output()
+    
+
+
+
+
+frame=simplegui.create_frame("button",200,300)
+button1=frame.add_button("print",output,50)
+button2=frame.add_button("swap",swap,50)
+button3=frame.add_button("add",add,50)
+button4=frame.add_button("minus",minus,50)
+button5=frame.add_input("say something",enter,50)
+
+frame.start()
+
+
+
+import simplegui    
+def print_hello():
+    print"hello"
+    
+    
+
+def print_goodbye():
+    print"goodbye"
+     
+    
+
+frame=simplegui.create_frame("button",200,300)
+button1=frame.add_button("hello",print_hello,50)
+button2=frame.add_button("goodbye",print_goodbye,50)
+
+frame.start()
+
+
+import simplegui
+def set_red():
+    global color 
+    color="red"
+
+def set_blue():
+    global color
+    color="blue"
+   
+
+def print_color():
+    print color
+    
+frame=simplegui.create_frame("print and set color",400,400)
+button1=frame.add_button("red",set_red)
+button2=frame.add_button("blue",set_blue)
+button3=frame.add_button("come on",print_color)
+frame.start()
+
+
+
+import simplegui
+
+def reset():
+    global count
+    count=0
+    
+def increment():
+    global count
+    count+=1
+    
+def decrement():
+    global count
+    count-=1
+    
+def print_count():
+    print count
+    
+frame=simplegui.create_frame("count",200,400)
+button1=frame.add_button("reset",reset)
+button2=frame.add_button("increment",increment)
+button3=frame.add_button("decrement",decrement)
+button4=frame.add_button("print out",print_count)
+
+
+import simplegui
+def output(inp):
+    print inp
+
+frame=simplegui.create_frame("guess",200,400)
+button1=frame.add_input("say something",output,40)
+
+frame.start()
+    
+
+import simplegui
+
+def sb(inp):
+    first_letter=inp[0]
+    rest=inp[1:]
+    inp=first_letter+rest
+    if (first_letter=="a")or(first_letter=="e")or(first_letter=="i")or(first_letter=="o")or(first_letter=="u"):
+        print inp+"kol"
+    else:
+        print rest+first_letter+"kol"
+        
+frame=simplegui.create_frame("guess",200,400)
+button1=frame.add_input("say something",sb,40)
+
+import simplegui
+
+def name_to_number(inp):
+    if inp=='rock':
+        return 0
+    elif inp=='spock':
+        return 1
+    elif inp=='paper':
+        return 2
+    elif inp=='lizard':
+        return 3
+    elif inp=='scissors':
+        return 4
+    else:
+        return "error"
+#helper function 1
+
+def number_to_name(number):
+    if number==0:
+        return 'rock'
+    elif number==1:
+        return 'spock'
+    elif number==2:
+        return 'paper'
+    elif number==3:
+        return 'lizard'
+    elif number==4:
+        return 'scissors'
+    else:
+        return"error"
+    
+def rpsls(player_choice):        
+    print "the player choice is ",player_choice    
+    player_number=name_to_number(player_choice)
+    print player_number
+    #test 
+    
+    import random
+    comp_number=random.randrange(5)
+    print comp_number
+    #test
+    comp_choice=number_to_name(comp_number)   
+    print"the comp_choice is ",comp_choice
+    
+    diff=(player_number-comp_number)%5
+    print diff
+    #test
+    if diff==1 or diff==2:
+        print "player wins"
+    elif diff==3 or diff==4:
+        print"comp wins"
+   
+    
+def get_guess(guess):  
+    if (guess=="scissors")or(guess=="rock")or(guess=="lizard")or(guess=="spock")or(guess=="paper"):
+        rpsls(guess)
+    else:
+        print "error"
+        
+frame=simplegui.create_frame("rpsls",400,200)
+button1=frame.add_input("your choice is",get_guess,60)
+
+frame.start()
